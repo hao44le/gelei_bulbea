@@ -44,12 +44,6 @@ def _get_cummulative_return(data):
 
     return cumret
 
-def _reverse_cummulative_return(first_data,data):
-    cumret  = []
-    for d in data:
-        cumret.append((d+1)*first_data)
-    return cumret
-
 def _get_bollinger_bands_columns(data):
     _check_pandas_dataframe(data, raise_err = True)
 

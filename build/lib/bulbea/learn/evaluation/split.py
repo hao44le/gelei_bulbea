@@ -3,6 +3,7 @@ from __future__ import absolute_import
 
 # imports - third-party packages
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler
 
 # module imports
 from bulbea._util import (
