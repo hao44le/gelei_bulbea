@@ -162,7 +162,7 @@ class Share(Entity):
     Date
     2003-05-15  18.6  18.849999  18.470001  18.73  71248800.0        1.213325
     '''
-    def __init__(self, source, ticker, start = None, end = None, latest = None, cache = False):
+    def __init__(self, source, ticker, start = None, end = None, latest = None, cache = False, data = None):
         _check_str(source, raise_err = True)
         _check_str(ticker, raise_err = True)
 
@@ -178,7 +178,12 @@ class Share(Entity):
         self.source    = source
         self.ticker    = ticker
 
-        self.update(start = start, end = end, latest = latest, cache = cache)
+        if data is not None:
+            self.data    = data
+            self.length  =  len(self.data)
+            self.attrs   = list(self.data.columns)
+        else:
+            self.update(start = start, end = end, latest = latest, cache = cache)
 
     def update(self, start = None, end = None, latest = None, cache = False):
         '''
