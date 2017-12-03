@@ -1,5 +1,4 @@
 import bulbea as bb
 share = bb.Share('WIKI', 'GOOGL')
 from bulbea.learn.evaluation import split
-scaler, Xtrain, Xtest, ytrain, ytest = split(share, 'Close', normalize = True)
-print(scaler)
+Xtrain, Xtest, ytrain, ytest = split(share, 'Close', normalize = True)
