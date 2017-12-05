@@ -13,6 +13,8 @@ def coinmarketcap_data(symbol):
     df['time'] = pd.to_datetime(df['time'], unit='ms')
     df['market_cap'] = df['market_cap'].astype('float64')
     df.set_index('time', inplace=True)
+    df.index = df.index.map(lambda t: t.strftime('%Y-%m-%d %H:%M'))
+    df.index = df.index.map(lambda t: datetime.datetime.strptime(t, '%Y-%m-%d %H:%M'))
 
     price_btc = data['price_btc']
     price_btc = [i[1] for i in price_btc]
@@ -37,5 +39,5 @@ def coinmarketcap_data(symbol):
     return df
 
 if __name__ == "__main__":
-    df,times = coinmarketcap_data('raiden-network-token')
+    df = coinmarketcap_data('raiden-network-token')
     print(df)
