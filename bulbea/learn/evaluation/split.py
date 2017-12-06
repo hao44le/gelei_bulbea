@@ -39,11 +39,12 @@ def split(share,
 
     length = len(share)
 
-    window = int(np.rint(length * window)) + 2
+    window = int(np.rint(length * window))
+    if window <= 1: window = 2
     offset = shift - 1
 
     splits = np.array([data[i if i is 0 else i + offset: i + window] for i in range(length - window)])
-    print("window:{} splits.shape:{}".format(window,splits.shape))
+    print("{} {}".format(window,len(splits)))
     if normalize:
         splits = np.array([_get_cummulative_return(split) for split in splits])
 
